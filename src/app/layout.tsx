@@ -4,6 +4,9 @@ import "./globals.css";
 
 import Header from "@/components/Header/Header";
 
+// Use with nextauth
+import { Providers } from "./(auth)/providers";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className}>
-        <Header />
-        {children}
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );
