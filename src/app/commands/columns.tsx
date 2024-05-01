@@ -35,7 +35,11 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Quantité",
   },
   {
-    accessorKey: "price",
+    accessorKey: "price-one",
     header: "Prix (unité)",
+  },
+  {
+    accessorKey: "price-total",
+    header: "Prix (total)",
   },
 ];
