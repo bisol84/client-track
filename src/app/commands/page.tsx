@@ -13,7 +13,7 @@ async function getData(): Promise<Payment[]> {
   ];
 }
 
-export default async function DemoPage() {
+export default async function Commands() {
   const data = await getData();
 
   return (

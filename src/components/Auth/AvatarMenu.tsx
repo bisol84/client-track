@@ -17,7 +17,7 @@ export default function AvatarPicture() {
     <Popover>
       <PopoverTrigger>
         <Avatar>
-          <AvatarImage src={session?.user?.image!} key={session?.expires} />
+          <AvatarImage src={session?.user?.image!} />
           <AvatarFallback>NA</AvatarFallback>
         </Avatar>
       </PopoverTrigger>

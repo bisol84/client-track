@@ -8,5 +8,5 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
   // session = null || { user: { name, email, image } }
 
-  return <main className="p-4"></main>;
+  return <main className="p-4">{session?.user?.image}</main>;
 }
