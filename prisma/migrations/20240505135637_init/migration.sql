@@ -44,21 +44,36 @@ CREATE TABLE "Commands" (
     "address" TEXT NOT NULL,
     "npa" INTEGER NOT NULL,
     "locality" TEXT NOT NULL,
+    "shipping_method" TEXT NOT NULL,
+    "shipping_price" DOUBLE PRECISION NOT NULL,
+    "shipping_date" TIMESTAMP(3) NOT NULL,
+    "billed" BOOLEAN NOT NULL DEFAULT false,
+    "billed_method" TEXT NOT NULL,
+    "billed_date" TIMESTAMP(3),
+    "price_total" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "Commands_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Command_line" (
+    "id" SERIAL NOT NULL,
+    "id_command" INTEGER NOT NULL,
     "article" TEXT NOT NULL,
     "article_price" DOUBLE PRECISION NOT NULL,
     "article_quantity" INTEGER NOT NULL,
     "options" TEXT NOT NULL,
     "options_price" DOUBLE PRECISION NOT NULL,
     "options_quantity" INTEGER NOT NULL,
-    "shipping_method" TEXT NOT NULL,
-    "shipping_price" DOUBLE PRECISION NOT NULL,
-    "shipping_date" TIMESTAMP(3) NOT NULL,
-    "billed" BOOLEAN NOT NULL DEFAULT false,
-    "billed_method" TEXT NOT NULL,
-    "billed_date" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Commands_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Command_line_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Command_line_id_command_key" ON "Command_line"("id_command");
 
 -- AddForeignKey
 ALTER TABLE "Options" ADD CONSTRAINT "Options_article_id_fkey" FOREIGN KEY ("article_id") REFERENCES "Articles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Command_line" ADD CONSTRAINT "Command_line_id_command_fkey" FOREIGN KEY ("id_command") REFERENCES "Commands"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

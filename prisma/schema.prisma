@@ -54,14 +54,6 @@ model Commands {
   npa               Int
   locality          String
 
-  article           String
-  article_price     Float
-  article_quantity  Int
-
-  options           String
-  options_price     Float
-  options_quantity  Int
-
   shipping_method   String
   shipping_price    Float
   shipping_date     DateTime
@@ -71,4 +63,21 @@ model Commands {
   billed_date       DateTime?
 
   price_total       Float
+
+  command_lines     Command_line[]
+}
+
+model Command_line {
+  id                Int       @id @default(autoincrement())
+  id_command        Int       @unique
+
+  article           String
+  article_price     Float
+  article_quantity  Int
+
+  options           String
+  options_price     Float
+  options_quantity  Int
+
+  command           Commands  @relation(fields: [id_command], references: [id])
 }
