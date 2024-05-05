@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
+import { Tabs } from "@mantine/core";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -26,20 +17,20 @@ export default function Menu() {
   ];
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="flex gap-4">
+    <Tabs>
+      <Tabs.List>
         {menuItems.map((item) => (
-          <NavigationMenuItem key={item.label}>
+          <Tabs.Tab key={item.label} value={item.label}>
             <Link href={item.href} legacyBehavior passHref>
-              <NavigationMenuLink
+              {/* <NavigationMenuLink
                 className={isActive(item.href) ? "border-b-2 font-bold" : ""}
-              >
-                {item.label}
-              </NavigationMenuLink>
+              > */}
+              {item.label}
+              {/* </NavigationMenuLink> */}
             </Link>
-          </NavigationMenuItem>
+          </Tabs.Tab>
         ))}
-      </NavigationMenuList>
-    </NavigationMenu>
+      </Tabs.List>
+    </Tabs>
   );
 }

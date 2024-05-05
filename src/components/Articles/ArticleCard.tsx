@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Image from "next/image";
+import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 
 interface Article {
   image: string;
@@ -24,17 +17,24 @@ export default function ArticleCard({
   type,
 }: Article) {
   return (
-    <Card className="w-52">
-      <CardHeader className="relative">
-        <div className="h-40">
-          <Image src={image} layout="fill" objectFit="cover" alt={image_alt} />
-        </div>
-      </CardHeader>
-      <CardContent className="p-4">
-        <CardTitle className="text-xl font-semibold mb-2">{name}</CardTitle>
-        <CardDescription className="text-sm mb-4">{type}</CardDescription>
-        <p className="text-lg font-semibold">{price} CHF</p>
-      </CardContent>
+    <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image src={image} height={160} alt={image_alt} />
+      </Card.Section>
+
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>Norway Fjord Adventures</Text>
+        <Badge color="pink">On Sale</Badge>
+      </Group>
+
+      <Text size="sm" c="dimmed">
+        With Fjord Tours you can explore more of the magical fjord landscapes
+        with tours and activities on and around the fjords of Norway
+      </Text>
+
+      <Button color="blue" fullWidth mt="md" radius="md">
+        Book classic tour now
+      </Button>
     </Card>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { Button } from "../ui/button";
+import { Button } from "@mantine/core";
 
 export default function LoginButton() {
   return (

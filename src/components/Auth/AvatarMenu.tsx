@@ -1,31 +1,24 @@
 "use client";
 
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Avatar } from "@mantine/core";
+import { Popover } from "@mantine/core";
 
 import { useSession, signOut } from "next-auth/react";
-import { Button } from "../ui/button";
+import { Button } from "@mantine/core";
 
 export default function AvatarPicture() {
   const { data: session, status } = useSession();
 
   return (
     <Popover>
-      <PopoverTrigger>
-        <Avatar>
-          <AvatarImage src={session?.user?.image!} />
-          <AvatarFallback>NA</AvatarFallback>
-        </Avatar>
-      </PopoverTrigger>
-      <PopoverContent>
+      <Popover.Target>
+        <Avatar src={session?.user?.image!} />
+      </Popover.Target>
+      <Popover.Dropdown>
         <Button className="w-full" variant="outline" onClick={signOut}>
           Déconnexion
         </Button>
-      </PopoverContent>
+      </Popover.Dropdown>
     </Popover>
   );
 }
