@@ -12,7 +12,7 @@ export default function AvatarPicture() {
   return (
     <Popover>
       <Popover.Target>
-        <Avatar src={session?.user?.image!} />
+        <Avatar src={session?.user?.image!} component="button" />
       </Popover.Target>
       <Popover.Dropdown>
         <Button className="w-full" variant="outline" onClick={signOut}>
