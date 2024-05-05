@@ -19,7 +19,7 @@ model Articles {
   price       Float
   type        String
   image       String?
-  image_alt   String?    @default("")
+  image_alt   String?
 
   options Options[]
 }
@@ -38,6 +38,8 @@ model Clients {
   lastname    String
   address     String
   npa         Int
+  phone       String
+  email       String
   locality    String
 }
 
@@ -62,6 +64,7 @@ model Commands {
 
   shipping_method   String
   shipping_price    Float
+  shipping_date     DateTime
 
   billed            Boolean @default(false)
   billed_method     String

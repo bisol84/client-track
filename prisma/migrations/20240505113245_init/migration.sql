@@ -4,6 +4,8 @@ CREATE TABLE "Articles" (
     "name" TEXT NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
     "type" TEXT NOT NULL,
+    "image" TEXT,
+    "image_alt" TEXT,
 
     CONSTRAINT "Articles_pkey" PRIMARY KEY ("id")
 );
@@ -25,6 +27,8 @@ CREATE TABLE "Clients" (
     "lastname" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "npa" INTEGER NOT NULL,
+    "phone" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "locality" TEXT NOT NULL,
 
     CONSTRAINT "Clients_pkey" PRIMARY KEY ("id")
@@ -48,6 +52,7 @@ CREATE TABLE "Commands" (
     "options_quantity" INTEGER NOT NULL,
     "shipping_method" TEXT NOT NULL,
     "shipping_price" DOUBLE PRECISION NOT NULL,
+    "shipping_date" TIMESTAMP(3) NOT NULL,
     "billed" BOOLEAN NOT NULL DEFAULT false,
     "billed_method" TEXT NOT NULL,
     "billed_date" TIMESTAMP(3) NOT NULL,
