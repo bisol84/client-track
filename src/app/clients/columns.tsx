@@ -33,7 +33,7 @@ export const columns: ColumnDef<Client>[] = [
   },
   {
     accessorKey: "locality",
-    header: "Localtié",
+    header: "Localité",
   },
   {
     accessorKey: "phone",

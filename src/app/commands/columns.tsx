@@ -11,13 +11,8 @@ export type Commands = {
   address: string;
   npa: number;
   locality: string;
-  article: string;
-  options: string;
-  article_quantity: string;
-  options_quantity: string;
   shipping_method: string;
   shipping_date: Date;
-  price_one: number;
   price_total: number;
 };
 
@@ -47,22 +42,6 @@ export const columns: ColumnDef<Commands>[] = [
     header: "Localité",
   },
   {
-    accessorKey: "article",
-    header: "Article",
-  },
-  {
-    accessorKey: "article_quantity",
-    header: "Quantité",
-  },
-  {
-    accessorKey: "options",
-    header: "Taille/Options",
-  },
-  {
-    accessorKey: "options_quantity",
-    header: "Quantité",
-  },
-  {
     accessorKey: "shipping_method",
     header: "Méthode d'envoi",
   },
@@ -71,11 +50,11 @@ export const columns: ColumnDef<Commands>[] = [
     header: "Date d'envoi",
   },
   {
-    accessorKey: "price_one",
-    header: "Prix (unité)",
-  },
-  {
     accessorKey: "price_total",
     header: "Prix (total)",
+  },
+  {
+    accessorKey: "billed",
+    header: "Payé",
   },
 ];
