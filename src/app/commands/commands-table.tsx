@@ -1,15 +1,15 @@
 import { Commands, columns } from "./columns";
 import { DataTable } from "./data-table";
+import prisma from "@/lib/db";
 
 async function getData(): Promise<Commands[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      fullname: "pending",
-    },
-    // ...
-  ];
+  const data = await prisma.Commands.findMany();
+
+  if (!data) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return data;
 }
 
 export default async function CommandsTable() {

@@ -68,5 +68,7 @@ model Commands {
 
   billed            Boolean @default(false)
   billed_method     String
-  billed_date       DateTime
+  billed_date       DateTime?
+
+  price_total       Float
 }

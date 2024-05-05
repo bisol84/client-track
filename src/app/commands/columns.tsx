@@ -5,8 +5,20 @@ import { ColumnDef } from "@tanstack/react-table";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Commands = {
-  id: string;
-  fullname: string;
+  date: Date;
+  firstname: string;
+  lastname: string;
+  address: string;
+  npa: number;
+  locality: string;
+  article: string;
+  options: string;
+  article_quantity: string;
+  options_quantity: string;
+  shipping_method: string;
+  shipping_date: Date;
+  price_one: number;
+  price_total: number;
 };
 
 export const columns: ColumnDef<Commands>[] = [
@@ -15,31 +27,55 @@ export const columns: ColumnDef<Commands>[] = [
     header: "Date",
   },
   {
-    accessorKey: "fullname",
-    header: "Nom/Prénom",
+    accessorKey: "firstname",
+    header: "Prénom",
+  },
+  {
+    accessorKey: "lastname",
+    header: "Nom",
+  },
+  {
+    accessorKey: "address",
+    header: "Adresse",
+  },
+  {
+    accessorKey: "npa",
+    header: "NPA",
+  },
+  {
+    accessorKey: "locality",
+    header: "Localité",
   },
   {
     accessorKey: "article",
     header: "Article",
   },
   {
-    accessorKey: "size-options",
-    header: "Taille/Options",
-  },
-  {
-    accessorKey: "detail",
-    header: "Détail",
-  },
-  {
-    accessorKey: "quantity",
+    accessorKey: "article_quantity",
     header: "Quantité",
   },
   {
-    accessorKey: "price-one",
+    accessorKey: "options",
+    header: "Taille/Options",
+  },
+  {
+    accessorKey: "options_quantity",
+    header: "Quantité",
+  },
+  {
+    accessorKey: "shipping_method",
+    header: "Méthode d'envoi",
+  },
+  {
+    accessorKey: "shipping_date",
+    header: "Date d'envoi",
+  },
+  {
+    accessorKey: "price_one",
     header: "Prix (unité)",
   },
   {
-    accessorKey: "price-total",
+    accessorKey: "price_total",
     header: "Prix (total)",
   },
 ];
