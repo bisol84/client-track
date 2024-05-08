@@ -4,6 +4,7 @@ CREATE TABLE "Articles" (
     "name" TEXT NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
     "type" TEXT NOT NULL,
+    "type_color" TEXT,
     "image" TEXT,
     "image_alt" TEXT,
 

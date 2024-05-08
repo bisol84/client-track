@@ -9,7 +9,6 @@ export default function Menu() {
   const isActive = (path: string) => path === pathname;
 
   const menuItems = [
-    { label: "Accueil", href: "/" },
     { label: "Tableau de bord", href: "/dashboard" },
     { label: "Commandes", href: "/commands" },
     { label: "Clients", href: "/clients" },

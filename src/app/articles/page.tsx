@@ -8,10 +8,12 @@ interface Article {
   name: string;
   price: number;
   type: string;
+  type_color: string;
 }
 
 async function getData() {
   const data = await prisma.Articles.findMany();
+  console.log(data);
 
   if (!data) {
     throw new Error("Failed to fetch data");
@@ -35,6 +37,7 @@ export default async function Articles() {
             image_alt={article.image_alt}
             price={article.price}
             type={article.type}
+            type_color={article.type_color}
           ></ArticleCard>
         ))}
       </div>

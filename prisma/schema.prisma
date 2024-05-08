@@ -18,6 +18,7 @@ model Articles {
   name        String
   price       Float
   type        String
+  type_color  String?
   image       String?
   image_alt   String?
 

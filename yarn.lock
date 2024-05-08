@@ -150,10 +150,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@mantine/core@^7.9.0":
-  version "7.9.0"
-  resolved "https://registry.npmjs.org/@mantine/core/-/core-7.9.0.tgz"
-  integrity sha512-EhELO1uYq2s08H69h4BCcvE26mNLPaXUi6RAjApqBIynMcyJlmdluFtvGKFxjpgFZy3moeSYNrjEW//T0uTMZg==
+"@mantine/core@^7.9.1":
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.9.1.tgz#778a9117267ef7db37e6f18dfff47be5d322fbc9"
+  integrity sha512-UXK11t1fAQ2ROQ9HTIZfyU52XdwS8sFJ2SRUh5uHMWSahJo3wTdKzaCvYN7wg+ONM9p6ENT0hC0dfv5qXoKU4w==
   dependencies:
     "@floating-ui/react" "^0.26.9"
     clsx "2.1.0"
@@ -162,25 +162,25 @@
     react-textarea-autosize "8.5.3"
     type-fest "^4.12.0"
 
-"@mantine/dates@^7.9.0":
-  version "7.9.0"
-  resolved "https://registry.npmjs.org/@mantine/dates/-/dates-7.9.0.tgz"
-  integrity sha512-+OOM8w6uZfBvlqPtwGIjG0Ef3z4E5QyWVmh7AhevgRS9RBdfa1YpxfRweDTDmrY9qYnim7fyM097Rwe30q/kpA==
+"@mantine/dates@^7.9.1":
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/@mantine/dates/-/dates-7.9.1.tgz#a854faac16fed1dde409d4f48a4673c5fd6d698a"
+  integrity sha512-HB6gIMV6OEz/ih48KedcII1MNpH6oLit2ajSG50POJ3jgDSBQI9710kSu3rTrC5TiTLrZTIr/u51gsk0Daaepg==
   dependencies:
     clsx "2.1.0"
 
-"@mantine/form@^7.9.0":
-  version "7.9.0"
-  resolved "https://registry.npmjs.org/@mantine/form/-/form-7.9.0.tgz"
-  integrity sha512-YFAUe3T6L+bQRJW7e2bNUdGON7OH8X0juDHojXoH3AKW5eHP/qTdDrUxAqi7n4rqb9yPdnOqs3aqE6T/evb8Hw==
+"@mantine/form@^7.9.1":
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/@mantine/form/-/form-7.9.1.tgz#fbdb9862165b7b5df719deb191c210a3696ccfb0"
+  integrity sha512-6Z4LkACT1ouoTvtI9hH/rT+L7qvfKnCypUyaCtYpPkA57ANamK7qkmeXXBmbGGOf8mJB+ZSgOvpDVKKRz5iH3Q==
   dependencies:
     fast-deep-equal "^3.1.3"
     klona "^2.0.6"
 
-"@mantine/hooks@^7.9.0":
-  version "7.9.0"
-  resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-7.9.0.tgz"
-  integrity sha512-LKgyrlaIK0S/gcn/VDbhqLBZOYjvhXfVcH7rMs4MIBVD+wuRo2LvvAYe3cUfQbBCfmlpRjqvewwvsIYYsjSofQ==
+"@mantine/hooks@^7.9.1":
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.9.1.tgz#9946432d017d56afe28f3980d1c64af0153a2128"
+  integrity sha512-nb2Ar+2HfGxLjGZgObapeUeqcQsUWJ+rvj4X2KNTUy3+YpvLIMD3CqREowWHF7/5OTGh4BCyBqQNZ9JFpnMeHQ==
 
 "@next/env@14.2.3":
   version "14.2.3"
@@ -807,7 +807,7 @@ data-view-byte-offset@^1.0.0:
 
 dayjs@^1.11.11:
   version "1.11.11"
-  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.11.tgz"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.11.tgz#dfe0e9d54c5f8b68ccf8ca5f72ac603e7e5ed59e"
   integrity sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==
 
 debug@^3.2.7:
@@ -2289,16 +2289,7 @@ postcss@8.4.31:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@^8.4.23:
-  version "8.4.38"
-  resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.38.tgz"
-  integrity sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==
-  dependencies:
-    nanoid "^3.3.7"
-    picocolors "^1.0.0"
-    source-map-js "^1.2.0"
-
-postcss@^8.4.38:
+postcss@^8.4.23, postcss@^8.4.38:
   version "8.4.38"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.38.tgz#b387d533baf2054288e337066d81c6bee9db9e0e"
   integrity sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==

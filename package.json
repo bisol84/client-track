@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/core": "^7.9.0",
-    "@mantine/dates": "^7.9.0",
-    "@mantine/form": "^7.9.0",
-    "@mantine/hooks": "^7.9.0",
+    "@mantine/core": "^7.9.1",
+    "@mantine/dates": "^7.9.1",
+    "@mantine/form": "^7.9.1",
+    "@mantine/hooks": "^7.9.1",
     "@prisma/client": "5.13.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

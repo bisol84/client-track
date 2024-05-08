@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 
 interface Article {
@@ -7,6 +9,7 @@ interface Article {
   name: string;
   price: number;
   type: string;
+  type_color: string;
 }
 
 export default function ArticleCard({
@@ -15,6 +18,7 @@ export default function ArticleCard({
   name,
   price,
   type,
+  type_color,
 }: Article) {
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -23,18 +27,13 @@ export default function ArticleCard({
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Norway Fjord Adventures</Text>
-        <Badge color="pink">On Sale</Badge>
+        <Text fw={500} className="text-xl">
+          {name}
+        </Text>
+        <Badge color={type_color}>{type}</Badge>
       </Group>
 
-      <Text size="sm" c="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes
-        with tours and activities on and around the fjords of Norway
-      </Text>
-
-      <Button color="blue" fullWidth mt="md" radius="md">
-        Book classic tour now
-      </Button>
+      <Text className="font-semibold">{price} CHF</Text>
     </Card>
   );
 }
