@@ -1,4 +1,3 @@
-// ArticleEditForm.js
 import { TextInput, Button } from "@mantine/core";
 import { FileInput } from "@mantine/core";
 
