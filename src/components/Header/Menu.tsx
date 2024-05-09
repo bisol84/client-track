@@ -19,15 +19,15 @@ export default function Menu() {
     <Tabs>
       <Tabs.List>
         {menuItems.map((item) => (
-          <Tabs.Tab key={item.label} value={item.label}>
-            <Link href={item.href} legacyBehavior passHref>
+          <Link href={item.href} legacyBehavior passHref key={item.label}>
+            <Tabs.Tab value={item.label}>
               {/* <NavigationMenuLink
                 className={isActive(item.href) ? "border-b-2 font-bold" : ""}
               > */}
               {item.label}
               {/* </NavigationMenuLink> */}
-            </Link>
-          </Tabs.Tab>
+            </Tabs.Tab>
+          </Link>
         ))}
       </Tabs.List>
     </Tabs>

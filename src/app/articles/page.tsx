@@ -13,7 +13,6 @@ interface Article {
 
 async function getData() {
   const data = await prisma.Articles.findMany();
-  console.log(data);
 
   if (!data) {
     throw new Error("Failed to fetch data");

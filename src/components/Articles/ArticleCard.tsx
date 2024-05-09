@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+import Link from "next/link";
 
 interface Article {
   image: string;
@@ -13,6 +14,7 @@ interface Article {
 }
 
 export default function ArticleCard({
+  id,
   image,
   image_alt,
   name,
@@ -34,6 +36,9 @@ export default function ArticleCard({
       </Group>
 
       <Text className="font-semibold">{price} CHF</Text>
+      <Link href={`/article/${id}`}>
+        <Button className="mt-3">Modifier</Button>
+      </Link>
     </Card>
   );
 }
