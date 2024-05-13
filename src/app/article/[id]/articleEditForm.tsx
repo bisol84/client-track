@@ -37,7 +37,7 @@ export default function ArticleEditForm({ formData, setFormData }) {
         label="Upload files"
         placeholder="Upload files"
         mt="md"
-        onChange={(event) => handleChange("image", event.target.files[0])}
+        onChange={(event) => handleChange("image", event?.target.files[0])}
       />
 
       <TextInput

@@ -10,7 +10,7 @@ export default function Menu() {
 
   const menuItems = [
     { label: "Tableau de bord", href: "/dashboard" },
-    { label: "Commandes", href: "/commands" },
+    { label: "Commandes", href: "/orders" },
     { label: "Clients", href: "/clients" },
     { label: "Articles", href: "/articles" },
   ];

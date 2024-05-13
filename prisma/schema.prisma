@@ -44,7 +44,7 @@ model Clients {
   locality    String
 }
 
-model Commands {
+model Orders {
   id                Int      @id @default(autoincrement())
   date              DateTime
   comment           String
@@ -65,12 +65,12 @@ model Commands {
 
   price_total       Float
 
-  command_lines     Command_line[]
+  order_lines     Order_line[]
 }
 
-model Command_line {
+model Order_line {
   id                Int       @id @default(autoincrement())
-  id_command        Int       @unique
+  id_order          Int       @unique
 
   article           String
   article_price     Float
@@ -80,5 +80,5 @@ model Command_line {
   options_price     Float
   options_quantity  Int
 
-  command           Commands  @relation(fields: [id_command], references: [id])
+  order           Orders  @relation(fields: [id_order], references: [id])
 }

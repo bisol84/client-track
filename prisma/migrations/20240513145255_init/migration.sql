@@ -36,7 +36,7 @@ CREATE TABLE "Clients" (
 );
 
 -- CreateTable
-CREATE TABLE "Commands" (
+CREATE TABLE "Orders" (
     "id" SERIAL NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "comment" TEXT NOT NULL,
@@ -53,13 +53,13 @@ CREATE TABLE "Commands" (
     "billed_date" TIMESTAMP(3),
     "price_total" DOUBLE PRECISION NOT NULL,
 
-    CONSTRAINT "Commands_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Orders_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Command_line" (
+CREATE TABLE "Order_line" (
     "id" SERIAL NOT NULL,
-    "id_command" INTEGER NOT NULL,
+    "id_order" INTEGER NOT NULL,
     "article" TEXT NOT NULL,
     "article_price" DOUBLE PRECISION NOT NULL,
     "article_quantity" INTEGER NOT NULL,
@@ -67,14 +67,14 @@ CREATE TABLE "Command_line" (
     "options_price" DOUBLE PRECISION NOT NULL,
     "options_quantity" INTEGER NOT NULL,
 
-    CONSTRAINT "Command_line_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Order_line_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Command_line_id_command_key" ON "Command_line"("id_command");
+CREATE UNIQUE INDEX "Order_line_id_order_key" ON "Order_line"("id_order");
 
 -- AddForeignKey
 ALTER TABLE "Options" ADD CONSTRAINT "Options_article_id_fkey" FOREIGN KEY ("article_id") REFERENCES "Articles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Command_line" ADD CONSTRAINT "Command_line_id_command_fkey" FOREIGN KEY ("id_command") REFERENCES "Commands"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Order_line" ADD CONSTRAINT "Order_line_id_order_fkey" FOREIGN KEY ("id_order") REFERENCES "Orders"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

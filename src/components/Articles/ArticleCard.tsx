@@ -37,7 +37,7 @@ export default function ArticleCard({
 
       <Text className="font-semibold">{price} CHF</Text>
       <Link href={`/article/${id}`}>
-        <Button className="mt-3">Modifier</Button>
+        <Button className="mt-3 w-full">Modifier</Button>
       </Link>
     </Card>
   );
