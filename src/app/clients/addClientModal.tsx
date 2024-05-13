@@ -1,8 +1,15 @@
 "use client";
 
 import { useDisclosure } from "@mantine/hooks";
-import { Modal, Button, TextInput, NumberInput } from "@mantine/core";
+import {
+  Modal,
+  Button,
+  TextInput,
+  NumberInput,
+  InputBase,
+} from "@mantine/core";
 import { IoMdPersonAdd } from "react-icons/io";
+import { IMaskInput } from "react-imask";
 
 async function onSubmit(event) {
   event.preventDefault();
@@ -25,7 +32,12 @@ export function AddClientModal() {
             <TextInput label="Prénom" name="firstname" placeholder="" />
             <TextInput label="Nom" name="lastname" placeholder="" />
           </div>
-          <TextInput label="Adresse" placeholder="" className="mt-3" />
+          <TextInput
+            label="Adresse"
+            name="address"
+            placeholder=""
+            className="mt-3"
+          />
           <div className="flex justify-between">
             <NumberInput
               label="NPA"
@@ -43,10 +55,11 @@ export function AddClientModal() {
               className="mt-3"
             />
           </div>
-          <TextInput
+          <InputBase
             label="Téléphone"
+            component={IMaskInput}
+            mask="+41 000 000 00 00"
             name="phone"
-            placeholder=""
             className="mt-3"
           />
           <TextInput
