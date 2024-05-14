@@ -10,6 +10,8 @@ import {
 } from "@mantine/core";
 import { FaCartPlus } from "react-icons/fa";
 import { IMaskInput } from "react-imask";
+import ClientSelector from "@/components/Orders/ClientSelector";
+import ArticleSelector from "@/components/Orders/ArticleSelector";
 
 async function onSubmit(event) {
   event.preventDefault();
@@ -28,7 +30,8 @@ export function AddOrderModal() {
     <>
       <Modal opened={opened} onClose={close} title="Ajouter une commande">
         <form onSubmit={onSubmit}>
-          <div className="flex justify-between">select personne</div>
+          <ClientSelector />
+          <ArticleSelector />
 
           <div className="flex justify-end items-end">
             <Button onClick={close} type="submit" className="mt-4">
