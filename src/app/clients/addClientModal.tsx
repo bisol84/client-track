@@ -58,7 +58,7 @@ export function AddClientModal() {
           <InputBase
             label="Téléphone"
             component={IMaskInput}
-            mask="+41 000 000 00 00"
+            mask="+41 00 000 00 00"
             name="phone"
             className="mt-3"
           />
