@@ -1,4 +1,5 @@
 import ArticleCard from "@/components/Articles/ArticleCard";
+import { AddArticleModal } from "./addArticleModal";
 import prisma from "@/lib/db";
 
 interface Article {
@@ -26,6 +27,9 @@ export default async function Articles() {
 
   return (
     <main className="m-4">
+      <div className="flex justify-end items-end">
+        <AddArticleModal />
+      </div>
       <div className="grid grid-cols-4 gap-4">
         {articles.map((article: Article) => (
           <ArticleCard
