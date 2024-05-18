@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
+import { revalidatePath } from "next/cache";
 import {
   Modal,
   Button,
@@ -16,7 +17,6 @@ async function onSubmit(event) {
   event.preventDefault();
 
   const formData = new FormData(event.currentTarget);
-  console.log("formData", formData.entries);
   const response = await fetch("/api/articles/", {
     method: "POST",
     body: formData,
@@ -42,16 +42,15 @@ export function AddArticleModal() {
               placeholder=""
               mt="md"
               name="name"
-              value={formData.name}
               onChange={(event) => handleChange("name", event.target.value)}
             />
-            <TextInput
+            <NumberInput
               label="Prix"
               description="Prix de l'article"
               placeholder=""
               mt="md"
-              value={formData.price}
               name="price"
+              hideControls
               onChange={(event) => handleChange("price", event.target.value)}
             />
             {/* <TextInput
@@ -76,11 +75,10 @@ export function AddArticleModal() {
               placeholder=""
               mt="md"
               name="type"
-              value={formData.type}
               onChange={(event) => handleChange("type", event.target.value)}
             />
 
-            <Button type="submit" mt="md" className="w-full">
+            <Button type="submit" mt="md" className="w-full" onClick={close}>
               Enregistrer
             </Button>
           </div>

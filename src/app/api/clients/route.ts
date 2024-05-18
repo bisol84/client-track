@@ -29,7 +29,6 @@ export async function POST(req: Request, res: Response) {
 export async function GET(req: Request, res: Response) {
   try {
     const result = await prisma.Clients.findMany();
-    console.log("result", result);
     return Response.json(result);
   } catch (error) {
     console.error("Erreur lors de la sélection :", error);

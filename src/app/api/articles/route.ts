@@ -15,8 +15,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     // Replace spaces in the file name with underscores
     const filename = name + "-" + file.name.replaceAll(" ", "_");
-    const filepath = "/public/images/" + filename;
-    const filepathdb = "/images/" + filename;
+    const filepath = "/public/images/articles/" + filename;
+    const filepathdb = "/images/articles/" + filename;
     await writeFile(path.join(process.cwd(), filepath), buffer);
 
     const result = await prisma.Articles.create({

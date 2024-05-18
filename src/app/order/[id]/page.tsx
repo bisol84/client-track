@@ -11,7 +11,6 @@ async function getData(params: string) {
   if (!data) {
     throw new Error("Failed to fetch data");
   }
-  console.log(data);
   return data;
 }
 
