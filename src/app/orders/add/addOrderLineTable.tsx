@@ -7,53 +7,49 @@ import { NumberInput } from "@mantine/core";
 import { useState } from "react";
 
 function getPrice(articleId) {
+  /*
+  Ajouter l'index
+  set du prix pour l'index
+  */
   return fetch(`/api/article/${articleId}`)
     .then((response) => response.json())
     .then((article) => article.price);
 }
 
-export default function AddArticlesTable() {
-  const [articles, setArticles] = useState([
+export default function AddOrderLineTable() {
+  const [orderLine, setOrderLine] = useState([
     {
-      articleId: "",
+      date: "",
+      article: "",
       quantity: 0,
       price: 0,
     },
   ]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  const handleArticleChange = (index, articleId) => {
-    const newArticles = [...articles];
-    newArticles[index].articleId = articleId;
-    getPrice(articleId).then((price) => {
-      newArticles[index].price = newArticles[index].quantity * price;
-      setArticles(newArticles);
-    });
+  const handleOrderLineChange = (index, field, value) => {
+    const newOrderLine = [...orderLine];
+    newOrderLine[index][field] = value;
+    setOrderLine(newOrderLine);
   };
 
-  const rows = articles.map((article, index) => (
+  const rows = orderLine.map((line: any, index: any) => (
     <Table.Tr key={index}>
       <Table.Td>
-        <DateInput placeholder="Date de la commande" />
+        <DateInput
+          placeholder="Date de la commande"
+          name="date"
+          onChange={(date) => handleOrderLineChange(index, "date", date)}
+        />
       </Table.Td>
       <Table.Td>
-        <ArticleSelector
-          label=""
-          extraclass=""
-          onArticleChange={(articleId) => handleArticleChange(index, articleId)}
-        />
+        <ArticleSelector label="" extraclass="" />
       </Table.Td>
       <Table.Td>
         <NumberInput
           placeholder="Nombre d'articles"
           name="quantity"
           hideControls
-          value={article.quantity}
-          onChange={(value) => {
-            const newArticles = [...articles];
-            newArticles[index].quantity = value;
-            handleArticleChange(index, newArticles[index].articleId);
-            setArticles(newArticles);
-          }}
         />
       </Table.Td>
       <Table.Td>
@@ -63,7 +59,6 @@ export default function AddArticlesTable() {
           hideControls
           readOnly
           variant="disabled"
-          value={article.price}
         />
       </Table.Td>
       <Table.Td></Table.Td>
@@ -77,7 +72,7 @@ export default function AddArticlesTable() {
         <Table.Tr>
           <Table.Th>Date</Table.Th>
           <Table.Th>Article</Table.Th>
-          <Table.Th>Nombre</Table.Th>
+          <Table.Th>Quantité</Table.Th>
           <Table.Th>Prix</Table.Th>
           <Table.Th></Table.Th>
           <Table.Th></Table.Th>

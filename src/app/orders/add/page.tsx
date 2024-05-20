@@ -1,14 +1,13 @@
 "use client";
 
 import ClientSelector from "@/components/Orders/ClientSelector";
-import { Button, TextInput, NumberInput, InputBase } from "@mantine/core";
-import AddArticlesTable from "./addArticlesTable";
+import AddOrderLineTable from "./addOrderLineTable";
 
 export default function AddOrder() {
   return (
     <main className="m-4">
       <ClientSelector />
-      <AddArticlesTable />
+      <AddOrderLineTable />
     </main>
   );
 }
