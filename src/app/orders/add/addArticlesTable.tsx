@@ -25,7 +25,7 @@ export default function AddArticlesTable() {
     const newArticles = [...articles];
     newArticles[index].articleId = articleId;
     getPrice(articleId).then((price) => {
-      newArticles[index].price = price;
+      newArticles[index].price = newArticles[index].quantity * price;
       setArticles(newArticles);
     });
   };
@@ -51,6 +51,7 @@ export default function AddArticlesTable() {
           onChange={(value) => {
             const newArticles = [...articles];
             newArticles[index].quantity = value;
+            handleArticleChange(index, newArticles[index].articleId);
             setArticles(newArticles);
           }}
         />
