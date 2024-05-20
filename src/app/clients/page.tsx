@@ -1,9 +1,19 @@
 import { AddClientModal } from "./addClientModal";
-import getClients from "./data";
 import ClientTable from "@/components/Clients/ClientTable";
+import prisma from "@/lib/db";
+
+async function getData() {
+  const data = await prisma.Clients.findMany();
+
+  if (!data) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return data;
+}
 
 export default async function Clients() {
-  const clients = await getClients();
+  const clients = await getData();
 
   return (
     <main className="m-4">

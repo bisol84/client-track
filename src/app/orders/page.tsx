@@ -1,6 +1,6 @@
 import getOrders from "./data";
 import OrdersTable from "@/components/Orders/OrdersTable";
-import { AddOrderModal } from "./addOrderModal";
+import { AddOrderButton } from "./addOrderButton";
 
 export default async function Orders() {
   const orders = await getOrders();
@@ -8,7 +8,7 @@ export default async function Orders() {
   return (
     <main className="m-4">
       <div className="flex justify-end items-end">
-        <AddOrderModal />
+        <AddOrderButton />
       </div>
       <OrdersTable orders={orders} />
     </main>
