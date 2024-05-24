@@ -56,7 +56,7 @@ export default function AddOrderLineTable() {
       <Table.Td>
         <DateInput
           placeholder="Date de la commande"
-          name="date"
+          name="order_date"
           onChange={(date) => handleOrderLineChange(index, "date", date)}
         />
       </Table.Td>
