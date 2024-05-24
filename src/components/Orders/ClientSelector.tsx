@@ -17,5 +17,12 @@ export default function ClientSelector() {
       });
   }, []);
 
-  return <NativeSelect label="Client" data={data} className="w-full" />;
+  return (
+    <NativeSelect
+      name="client-selector"
+      label="Client"
+      data={data}
+      className="w-full"
+    />
+  );
 }

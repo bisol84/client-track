@@ -27,7 +27,7 @@ export default function AddOrderLineTable() {
       total: 0,
     },
   ]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalOrderPrice, setTotalOrderPrice] = useState(0);
 
   const handleArticleChange = (index, articleId) => {
     getPrice(articleId).then((price) => {
@@ -40,6 +40,14 @@ export default function AddOrderLineTable() {
   const handleOrderLineChange = (index, field, value) => {
     const newFormData = [...formData];
     newFormData[index][field] = value;
+
+    if (field == "quantity") {
+      newFormData[index].total = calculateTotal(
+        newFormData[index].price,
+        value,
+      );
+    }
+
     setFormData(newFormData);
   };
 
