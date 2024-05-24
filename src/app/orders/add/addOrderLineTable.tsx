@@ -7,33 +7,43 @@ import { NumberInput } from "@mantine/core";
 import { useState } from "react";
 
 function getPrice(articleId) {
-  /*
-  Ajouter l'index
-  set du prix pour l'index
-  */
   return fetch(`/api/article/${articleId}`)
     .then((response) => response.json())
     .then((article) => article.price);
 }
 
+function calculateTotal(price, quantity) {
+  const totalPrice = parseFloat(price) * parseFloat(quantity);
+  return totalPrice;
+}
+
 export default function AddOrderLineTable() {
-  const [orderLine, setOrderLine] = useState([
+  const [formData, setFormData] = useState([
     {
       date: "",
       article: "",
-      quantity: 0,
       price: 0,
+      quantity: 0,
+      total: 0,
     },
   ]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const handleOrderLineChange = (index, field, value) => {
-    const newOrderLine = [...orderLine];
-    newOrderLine[index][field] = value;
-    setOrderLine(newOrderLine);
+  const handleArticleChange = (index, articleId) => {
+    getPrice(articleId).then((price) => {
+      const newFormData = [...formData];
+      newFormData[index].price = price;
+      setFormData(newFormData);
+    });
   };
 
-  const rows = orderLine.map((line: any, index: any) => (
+  const handleOrderLineChange = (index, field, value) => {
+    const newFormData = [...formData];
+    newFormData[index][field] = value;
+    setFormData(newFormData);
+  };
+
+  const rows = formData.map((formLine: any, index: any) => (
     <Table.Tr key={index}>
       <Table.Td>
         <DateInput
@@ -43,13 +53,10 @@ export default function AddOrderLineTable() {
         />
       </Table.Td>
       <Table.Td>
-        <ArticleSelector label="" extraclass="" />
-      </Table.Td>
-      <Table.Td>
-        <NumberInput
-          placeholder="Nombre d'articles"
-          name="quantity"
-          hideControls
+        <ArticleSelector
+          label=""
+          extraclass=""
+          onChange={(articleId) => handleArticleChange(index, articleId)}
         />
       </Table.Td>
       <Table.Td>
@@ -59,9 +66,30 @@ export default function AddOrderLineTable() {
           hideControls
           readOnly
           variant="disabled"
+          value={formLine.price}
         />
       </Table.Td>
-      <Table.Td></Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Nombre d'articles"
+          name="quantity"
+          value={formLine.quantity}
+          hideControls
+          onChange={(quantity) =>
+            handleOrderLineChange(index, "quantity", quantity)
+          }
+        />
+      </Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Total"
+          name="total"
+          hideControls
+          readOnly
+          variant="disabled"
+          value={formLine.total}
+        />
+      </Table.Td>
       <Table.Td></Table.Td>
     </Table.Tr>
   ));
@@ -72,9 +100,9 @@ export default function AddOrderLineTable() {
         <Table.Tr>
           <Table.Th>Date</Table.Th>
           <Table.Th>Article</Table.Th>
-          <Table.Th>Quantité</Table.Th>
           <Table.Th>Prix</Table.Th>
-          <Table.Th></Table.Th>
+          <Table.Th>Quantité</Table.Th>
+          <Table.Th>Total</Table.Th>
           <Table.Th></Table.Th>
         </Table.Tr>
       </Table.Thead>

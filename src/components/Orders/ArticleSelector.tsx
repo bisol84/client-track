@@ -1,7 +1,7 @@
 import { NativeSelect } from "@mantine/core";
 import { useEffect, useState } from "react";
 
-export default function ArticleSelector({ label, extraclass }) {
+export default function ArticleSelector({ label, extraclass, onChange }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -16,5 +16,12 @@ export default function ArticleSelector({ label, extraclass }) {
       });
   }, []);
 
-  return <NativeSelect label={label} data={data} className="w-full" />;
+  return (
+    <NativeSelect
+      label={label}
+      data={data}
+      className="w-full"
+      onChange={(e) => onChange(e.target.value)}
+    />
+  );
 }
