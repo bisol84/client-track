@@ -22,17 +22,17 @@ export default function AddOrderLineTable() {
     {
       date: "",
       article: "",
-      price: 0,
-      quantity: 0,
-      total: 0,
+      article_price: 0,
+      article_quantity: 0,
+      article_total_price: 0,
     },
   ]);
-  const [totalOrderPrice, setTotalOrderPrice] = useState(0);
+  const [orderTotalPrice, setOrderTotalPrice] = useState(0);
 
   const handleArticleChange = (index, articleId) => {
-    getPrice(articleId).then((price) => {
+    getPrice(articleId).then((articlePrice) => {
       const newFormData = [...formData];
-      newFormData[index].price = price;
+      newFormData[index].article_price = articlePrice;
       setFormData(newFormData);
     });
   };
@@ -42,8 +42,8 @@ export default function AddOrderLineTable() {
     newFormData[index][field] = value;
 
     if (field == "quantity") {
-      newFormData[index].total = calculateTotal(
-        newFormData[index].price,
+      newFormData[index].article_total_price = calculateTotal(
+        newFormData[index].article_price,
         value,
       );
     }
@@ -52,54 +52,77 @@ export default function AddOrderLineTable() {
   };
 
   const rows = formData.map((formLine: any, index: any) => (
-    <Table.Tr key={index}>
-      <Table.Td>
-        <DateInput
-          placeholder="Date de la commande"
-          name="order_date"
-          onChange={(date) => handleOrderLineChange(index, "date", date)}
-        />
-      </Table.Td>
-      <Table.Td>
-        <ArticleSelector
-          label=""
-          extraclass=""
-          onChange={(articleId) => handleArticleChange(index, articleId)}
-        />
-      </Table.Td>
-      <Table.Td>
-        <NumberInput
-          placeholder="Prix de l'article"
-          name="price"
-          hideControls
-          readOnly
-          variant="disabled"
-          value={formLine.price}
-        />
-      </Table.Td>
-      <Table.Td>
-        <NumberInput
-          placeholder="Nombre d'articles"
-          name="quantity"
-          value={formLine.quantity}
-          hideControls
-          onChange={(quantity) =>
-            handleOrderLineChange(index, "quantity", quantity)
-          }
-        />
-      </Table.Td>
-      <Table.Td>
-        <NumberInput
-          placeholder="Total"
-          name="total"
-          hideControls
-          readOnly
-          variant="disabled"
-          value={formLine.total}
-        />
-      </Table.Td>
-      <Table.Td></Table.Td>
-    </Table.Tr>
+    <>
+      <Table.Tr key={index}>
+        <Table.Td>
+          <DateInput
+            placeholder="Date de la commande"
+            name="order-date"
+            onChange={(date) => handleOrderLineChange(index, "date", date)}
+          />
+        </Table.Td>
+        <Table.Td>
+          <ArticleSelector
+            label=""
+            extraclass=""
+            onChange={(articleId) => handleArticleChange(index, articleId)}
+          />
+        </Table.Td>
+        <Table.Td>
+          <NumberInput
+            placeholder="Prix de l'article"
+            name="article-price"
+            hideControls
+            readOnly
+            variant="disabled"
+            value={formLine.article_price}
+          />
+        </Table.Td>
+        <Table.Td>
+          <NumberInput
+            placeholder="Nombre d'articles"
+            name="article-quantity"
+            value={formLine.article_quantity}
+            hideControls
+            onChange={(quantity) =>
+              handleOrderLineChange(index, "quantity", quantity)
+            }
+          />
+        </Table.Td>
+        <Table.Td>
+          <NumberInput
+            placeholder="Total"
+            name="article-total-price"
+            hideControls
+            readOnly
+            variant="disabled"
+            value={formLine.article_total_price}
+          />
+        </Table.Td>
+        <Table.Td></Table.Td>
+      </Table.Tr>
+
+      <Table.Tr>
+        <Table.Td></Table.Td>
+        <Table.Td></Table.Td>
+        <Table.Td></Table.Td>
+        <Table.Td className="text-right">
+          <strong>Total</strong>
+        </Table.Td>
+        <Table.Td>
+          {" "}
+          <NumberInput
+            placeholder="Total"
+            name="order-total-price"
+            hideControls
+            readOnly
+            variant="disabled"
+            value={orderTotalPrice}
+          />
+        </Table.Td>
+        <Table.Td></Table.Td>
+      </Table.Tr>
+    </>
   ));
 
   return (
