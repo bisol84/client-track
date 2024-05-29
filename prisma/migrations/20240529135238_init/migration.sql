@@ -39,17 +39,17 @@ CREATE TABLE "Clients" (
 CREATE TABLE "Orders" (
     "id" SERIAL NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
-    "comment" TEXT NOT NULL,
+    "comment" TEXT,
     "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "npa" INTEGER NOT NULL,
     "locality" TEXT NOT NULL,
-    "shipping_method" TEXT NOT NULL,
-    "shipping_price" DOUBLE PRECISION NOT NULL,
-    "shipping_date" TIMESTAMP(3) NOT NULL,
+    "shipping_method" TEXT,
+    "shipping_price" DOUBLE PRECISION,
+    "shipping_date" TIMESTAMP(3),
     "billed" BOOLEAN NOT NULL DEFAULT false,
-    "billed_method" TEXT NOT NULL,
+    "billed_method" TEXT,
     "billed_date" TIMESTAMP(3),
     "price_total" DOUBLE PRECISION NOT NULL,
 
@@ -63,11 +63,21 @@ CREATE TABLE "Order_line" (
     "article" TEXT NOT NULL,
     "article_price" DOUBLE PRECISION NOT NULL,
     "article_quantity" INTEGER NOT NULL,
-    "options" TEXT NOT NULL,
-    "options_price" DOUBLE PRECISION NOT NULL,
-    "options_quantity" INTEGER NOT NULL,
+    "article_total_price" DOUBLE PRECISION NOT NULL,
+    "options" TEXT,
+    "options_price" DOUBLE PRECISION,
+    "options_quantity" INTEGER,
 
     CONSTRAINT "Order_line_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Shipping_methods" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "Shipping_methods_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

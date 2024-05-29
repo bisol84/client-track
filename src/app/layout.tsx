@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
+
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 import Header from "@/components/Header/Header";

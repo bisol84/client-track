@@ -1,7 +1,6 @@
 "use client";
 
 import { Table } from "@mantine/core";
-import { DateInput } from "@mantine/dates";
 import ArticleSelector from "@/components/Orders/ArticleSelector";
 import { NumberInput } from "@mantine/core";
 import { useState } from "react";
@@ -41,7 +40,7 @@ export default function AddOrderLineTable() {
     const newFormData = [...formData];
     newFormData[index][field] = value;
 
-    if (field == "quantity") {
+    if (field === "quantity") {
       newFormData[index].article_total_price = calculateTotal(
         newFormData[index].article_price,
         value,
@@ -49,87 +48,62 @@ export default function AddOrderLineTable() {
     }
 
     setFormData(newFormData);
+
+    const total = newFormData.reduce(
+      (sum, item) => sum + item.article_total_price,
+      0,
+    );
+    setOrderTotalPrice(total);
   };
 
-  const rows = formData.map((formLine: any, index: any) => (
-    <>
-      <Table.Tr key={index}>
-        <Table.Td>
-          <DateInput
-            placeholder="Date de la commande"
-            name="order-date"
-            onChange={(date) => handleOrderLineChange(index, "date", date)}
-          />
-        </Table.Td>
-        <Table.Td>
-          <ArticleSelector
-            label=""
-            extraclass=""
-            onChange={(articleId) => handleArticleChange(index, articleId)}
-          />
-        </Table.Td>
-        <Table.Td>
-          <NumberInput
-            placeholder="Prix de l'article"
-            name="article-price"
-            hideControls
-            readOnly
-            variant="disabled"
-            value={formLine.article_price}
-          />
-        </Table.Td>
-        <Table.Td>
-          <NumberInput
-            placeholder="Nombre d'articles"
-            name="article-quantity"
-            value={formLine.article_quantity}
-            hideControls
-            onChange={(quantity) =>
-              handleOrderLineChange(index, "quantity", quantity)
-            }
-          />
-        </Table.Td>
-        <Table.Td>
-          <NumberInput
-            placeholder="Total"
-            name="article-total-price"
-            hideControls
-            readOnly
-            variant="disabled"
-            value={formLine.article_total_price}
-          />
-        </Table.Td>
-        <Table.Td></Table.Td>
-      </Table.Tr>
-
-      <Table.Tr>
-        <Table.Td></Table.Td>
-        <Table.Td></Table.Td>
-        <Table.Td></Table.Td>
-        <Table.Td className="text-right">
-          <strong>Total</strong>
-        </Table.Td>
-        <Table.Td>
-          {" "}
-          <NumberInput
-            placeholder="Total"
-            name="order-total-price"
-            hideControls
-            readOnly
-            variant="disabled"
-            value={orderTotalPrice}
-          />
-        </Table.Td>
-        <Table.Td></Table.Td>
-      </Table.Tr>
-    </>
+  const rows = formData.map((formLine, index) => (
+    <Table.Tr key={index}>
+      <Table.Td>
+        <ArticleSelector
+          label=""
+          extraclass=""
+          onChange={(articleId) => handleArticleChange(index, articleId)}
+        />
+      </Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Prix de l'article"
+          name="article-price"
+          hideControls
+          readOnly
+          variant="disabled"
+          value={formLine.article_price}
+        />
+      </Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Nombre d'articles"
+          name="article-quantity"
+          value={formLine.article_quantity}
+          hideControls
+          onChange={(quantity) =>
+            handleOrderLineChange(index, "quantity", quantity)
+          }
+        />
+      </Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Total"
+          name="article-total-price"
+          hideControls
+          readOnly
+          variant="disabled"
+          value={formLine.article_total_price}
+        />
+      </Table.Td>
+      <Table.Td></Table.Td>
+    </Table.Tr>
   ));
 
   return (
     <Table className="mt-4">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Date</Table.Th>
           <Table.Th>Article</Table.Th>
           <Table.Th>Prix</Table.Th>
           <Table.Th>Quantité</Table.Th>
@@ -137,7 +111,26 @@ export default function AddOrderLineTable() {
           <Table.Th></Table.Th>
         </Table.Tr>
       </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
+      <Table.Tbody>
+        {rows}
+        <Table.Tr key="total">
+          <Table.Td colSpan={2}></Table.Td>
+          <Table.Td className="text-right">
+            <strong>Total</strong>
+          </Table.Td>
+          <Table.Td>
+            <NumberInput
+              placeholder="Total"
+              name="order-total-price"
+              hideControls
+              readOnly
+              variant="disabled"
+              value={orderTotalPrice}
+            />
+          </Table.Td>
+          <Table.Td></Table.Td>
+        </Table.Tr>
+      </Table.Tbody>
     </Table>
   );
 }

@@ -9,8 +9,8 @@ export async function POST(req: Request, res: Response) {
       where: { id: parseInt(data.get("client-selector")) },
     });
 
-    // console.log(client);
-    console.log(data);
+    console.log("Client trouvé :", client);
+    console.log("Données du formulaire :", data);
 
     const result = await prisma.Orders.create({
       data: {
@@ -21,13 +21,13 @@ export async function POST(req: Request, res: Response) {
         locality: client.locality,
 
         date: data.get("order-date"),
-        article_price: parseFloat(data.get("article-price")),
-        article_quantity: parseInt(data.get("article-quantity")),
-        article_total: parseFloat(data.get("article-total-price")),
+        // article_price: parseFloat(data.get("article-price")),
+        // article_quantity: parseInt(data.get("article-quantity")),
+        // article_total: parseFloat(data.get("article-total-price")),
 
         order_total_price: data.get("order-total-price"),
 
-        shipping_method: "",
+        shipping_method: data.get("shipping-selector"),
         shipping_price: 0,
 
         billed_method: "",

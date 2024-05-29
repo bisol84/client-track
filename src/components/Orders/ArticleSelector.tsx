@@ -13,8 +13,6 @@ export default function ArticleSelector({ onChange }) {
     label: article.type + " " + article.name,
   }));
 
-  console.log(data);
-
   return (
     <NativeSelect
       label=""

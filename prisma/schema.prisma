@@ -83,3 +83,9 @@ model Order_line {
 
   order           Orders  @relation(fields: [id_order], references: [id])
 }
+
+model Shipping_methods {
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       Float
+}
