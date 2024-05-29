@@ -1,7 +1,7 @@
 "use client";
 
 import ArticleCard from "@/components/Articles/ArticleCard";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 interface Article {
   id: number;
@@ -13,22 +13,16 @@ interface Article {
   type_color: string;
 }
 
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 export default function ArticleGrid() {
-  const [articles, setArticles] = useState<Article[]>([]);
-
-  const fetchArticles = async () => {
-    const response = await fetch("/api/articles");
-    const data = await response.json();
-    setArticles(data);
-  };
-
-  useEffect(() => {
-    fetchArticles();
-  }, []);
+  const { data, error } = useSWR("/api/articles", fetcher);
+  if (error) return <div>Erreur</div>;
+  if (!data) return <div>Chargement...</div>;
 
   return (
     <div className="grid grid-cols-4 gap-4 mt-4">
-      {articles.map((article: Article) => (
+      {data.map((article: Article) => (
         <ArticleCard
           key={article.id}
           id={article.id}

@@ -1,25 +1,24 @@
 import { NativeSelect } from "@mantine/core";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
-export default function ArticleSelector({ label, extraclass, onChange }) {
-  const [data, setData] = useState([]);
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
-  useEffect(() => {
-    fetch("/api/articles")
-      .then((response) => response.json())
-      .then((articles) => {
-        const formattedData = articles.map((article) => ({
-          value: article.id,
-          label: article.name,
-        }));
-        setData(formattedData);
-      });
-  }, []);
+export default function ArticleSelector({ onChange }) {
+  const { data, error } = useSWR("/api/articles", fetcher);
+  if (!data) return <div>Chargement...</div>;
+  if (error) return <div>Erreur</div>;
+
+  const formattedData = data.map((article) => ({
+    value: article.id,
+    label: article.type + " " + article.name,
+  }));
+
+  console.log(data);
 
   return (
     <NativeSelect
-      label={label}
-      data={data}
+      label=""
+      data={formattedData}
       className="w-full"
       onChange={(e) => onChange(e.target.value)}
     />

@@ -1,27 +1,24 @@
 import { NativeSelect } from "@mantine/core";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function ClientSelector() {
-  const [data, setData] = useState([]);
+  const { data, error } = useSWR("/api/clients", fetcher);
 
-  useEffect(() => {
-    fetch("/api/clients")
-      .then((response) => response.json())
-      .then((clients) => {
-        const formattedData = clients.map((client) => ({
-          value: client.id,
-          label:
-            client.firstname + " " + client.lastname + " - " + client.address,
-        }));
-        setData(formattedData);
-      });
-  }, []);
+  if (error) return <div>Erreur</div>;
+  if (!data) return <div>Chargement...</div>;
+
+  const formattedData = data.map((client) => ({
+    value: client.id,
+    label: client.firstname + " " + client.lastname + " - " + client.address,
+  }));
 
   return (
     <NativeSelect
       name="client-selector"
       label="Client"
-      data={data}
+      data={formattedData}
       className="w-full"
     />
   );
