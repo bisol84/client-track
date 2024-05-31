@@ -12,11 +12,15 @@ export default function ArticleSelector({ onChange }) {
     value: article.id,
     label: article.type + " " + article.name,
   }));
+  const dataWithEmptyOption = [
+    { value: "", label: "Sélectionnez un article" },
+    ...formattedData,
+  ];
 
   return (
     <NativeSelect
       label=""
-      data={formattedData}
+      data={dataWithEmptyOption}
       className="w-full"
       onChange={(e) => onChange(e.target.value)}
     />

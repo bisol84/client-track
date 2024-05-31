@@ -13,12 +13,16 @@ export default function ShippingSelector() {
     value: shipping.price,
     label: shipping.name,
   }));
+  const dataWithEmptyOption = [
+    { value: "", label: "Sélectionnez une méthode d'envoi" },
+    ...formattedData,
+  ];
 
   return (
     <NativeSelect
       label="Méthode d'envoi"
       name="shipping-selector"
-      data={formattedData}
+      data={dataWithEmptyOption}
       className="w-full"
     />
   );

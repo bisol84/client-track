@@ -21,19 +21,23 @@ export default function ArticleGrid() {
   if (!data) return <div>Chargement...</div>;
 
   return (
-    <div className="grid grid-cols-4 gap-4 mt-4">
-      {data.map((article: Article) => (
-        <ArticleCard
-          key={article.id}
-          id={article.id}
-          name={article.name}
-          image={article.image}
-          image_alt={article.image_alt}
-          price={article.price}
-          type={article.type}
-          type_color={article.type_color}
-        ></ArticleCard>
-      ))}
+    <div>
+      {data && data.length > 0 && (
+        <div className="grid grid-cols-4 gap-4 mt-4">
+          {data.map((article: Article) => (
+            <ArticleCard
+              key={article.id}
+              id={article.id}
+              name={article.name}
+              image={article.image}
+              image_alt={article.image_alt}
+              price={article.price}
+              type={article.type}
+              type_color={article.type_color}
+            ></ArticleCard>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

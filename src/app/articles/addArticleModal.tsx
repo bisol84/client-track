@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { revalidatePath } from "next/cache";
 import {
   Modal,
   Button,
@@ -51,7 +50,7 @@ export function AddArticleModal() {
               mt="md"
               name="price"
               hideControls
-              onChange={(event) => handleChange("price", event.target.value)}
+              onChange={(value) => handleChange("price", value)}
             />
             <FileInput
               accept="image/png,image/jpeg"

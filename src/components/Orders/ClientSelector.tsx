@@ -13,12 +13,16 @@ export default function ClientSelector() {
     value: client.id,
     label: client.firstname + " " + client.lastname + " - " + client.address,
   }));
+  const dataWithEmptyOption = [
+    { value: "", label: "Sélectionnez un client" },
+    ...formattedData,
+  ];
 
   return (
     <NativeSelect
       name="client-selector"
       label="Client"
-      data={formattedData}
+      data={dataWithEmptyOption}
       className="w-full"
     />
   );
