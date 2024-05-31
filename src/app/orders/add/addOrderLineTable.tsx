@@ -2,7 +2,7 @@
 
 import { Table } from "@mantine/core";
 import ArticleSelector from "@/components/Orders/ArticleSelector";
-import { NumberInput } from "@mantine/core";
+import { NumberInput, NativeSelect } from "@mantine/core";
 import { useState } from "react";
 
 function getPrice(articleId) {
@@ -87,6 +87,74 @@ export default function AddOrderLineTable() {
         />
       </Table.Td>
       <Table.Td>
+        <NativeSelect
+          label=""
+          className="w-full"
+          data={[
+            "12-15 ans",
+            "1-7 ans",
+            "2-4 ans",
+            "Semainier (7 lingettes + panier",
+          ]}
+        />
+      </Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Nombre d'option 1"
+          name="option1-quantity"
+          value={formLine.article_quantity}
+          hideControls
+          // onChange={(quantity) =>
+          //   handleOrderLineChange(index, "quantity", quantity)
+          // }
+        />
+      </Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Prix de l'option 1"
+          name="option1-price"
+          hideControls
+          readOnly
+          variant="disabled"
+          // value={formLine.article_price}
+        />
+      </Table.Td>
+      <Table.Td>
+        {" "}
+        <NativeSelect
+          label=""
+          className="w-full"
+          data={[
+            "12-15 ans",
+            "1-7 ans",
+            "2-4 ans",
+            "Semainier (7 lingettes + panier",
+          ]}
+        />
+      </Table.Td>
+      <Table.Td>
+        <NumberInput
+          placeholder="Nombre d'option 2"
+          name="option2-quantity"
+          value={formLine.article_quantity}
+          hideControls
+          // onChange={(quantity) =>
+          //   handleOrderLineChange(index, "quantity", quantity)
+          // }
+        />
+      </Table.Td>
+      <Table.Td>
+        {" "}
+        <NumberInput
+          placeholder="Prix de l'option 2"
+          name="option2-price"
+          hideControls
+          readOnly
+          variant="disabled"
+          // value={formLine.article_price}
+        />
+      </Table.Td>
+      <Table.Td>
         <NumberInput
           placeholder="Total"
           name="article-total-price"
@@ -96,7 +164,6 @@ export default function AddOrderLineTable() {
           value={formLine.article_total_price}
         />
       </Table.Td>
-      <Table.Td></Table.Td>
     </Table.Tr>
   ));
 
@@ -107,14 +174,19 @@ export default function AddOrderLineTable() {
           <Table.Th>Article</Table.Th>
           <Table.Th>Prix</Table.Th>
           <Table.Th>Quantité</Table.Th>
-          <Table.Th>Total</Table.Th>
-          <Table.Th></Table.Th>
+          <Table.Th>Opt1</Table.Th>
+          <Table.Th>Qua1</Table.Th>
+          <Table.Th>Pri1</Table.Th>
+          <Table.Th>Opt2</Table.Th>
+          <Table.Th>Qua2</Table.Th>
+          <Table.Th>Pri2</Table.Th>
+          <Table.Th>Prix</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>
         {rows}
         <Table.Tr key="total">
-          <Table.Td colSpan={2}></Table.Td>
+          <Table.Td colSpan={8}></Table.Td>
           <Table.Td className="text-right">
             <strong>Total</strong>
           </Table.Td>
