@@ -2,21 +2,30 @@
 
 import ClientSelector from "@/components/Orders/ClientSelector";
 import AddOrderLineTable from "./addOrderLineTable";
+import AddArticlesToOrder from "./addArticlesToOrder";
 import { Button, Divider } from "@mantine/core";
 import ShippingSelector from "@/components/Orders/ShippingSelector";
 import { DateInput } from "@mantine/dates";
-
-async function onSubmit(event) {
-  event.preventDefault();
-
-  const formData = new FormData(event.currentTarget);
-  const response = await fetch("/api/orders/", {
-    method: "POST",
-    body: formData,
-  });
-}
+import { useState } from "react";
 
 export default function AddOrder() {
+  const [orderData, setOrderData] = useState([
+    {
+      id: 1,
+      article: [],
+    },
+  ]);
+
+  function onSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const response = fetch("/api/orders/", {
+      method: "POST",
+      body: formData,
+    });
+  }
+
   return (
     <main className="m-4">
       <form name="addOrder" onSubmit={onSubmit}>
@@ -38,7 +47,7 @@ export default function AddOrder() {
           </div>
         </div>
         <Divider my="md" />
-        <AddOrderLineTable />
+        <AddArticlesToOrder />
         <div className="flex content-end justify-end mt-4">
           <Button type="submit">Ajouter la commande</Button>
         </div>

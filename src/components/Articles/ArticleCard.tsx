@@ -23,9 +23,9 @@ export default function ArticleCard({
   type_color,
 }: Article) {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <Image src={image} height={160} alt={image_alt} />
+    <Card shadow="sm" padding="lg" radius="md" withBorder h={300}>
+      <Card.Section h={150}>
+        <Image src={image} h={150} alt={image_alt} />
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs">

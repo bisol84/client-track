@@ -24,14 +24,6 @@ export default function ArticleEditForm({ formData, setFormData }) {
         value={formData.price}
         onChange={(event) => handleChange("price", event.target.value)}
       />
-      {/* <TextInput
-        label="Image"
-        description="Image de l'article"
-        placeholder=""
-        mt="md"
-        value={formData.image}
-        onChange={(event) => handleChange("image", event.target.value)}
-      /> */}
       <FileInput
         accept="image/png,image/jpeg"
         label="Upload files"
@@ -39,7 +31,6 @@ export default function ArticleEditForm({ formData, setFormData }) {
         mt="md"
         onChange={(event) => handleChange("image", event?.target.files[0])}
       />
-
       <TextInput
         label="Type"
         description="Type de l'article"
@@ -48,7 +39,6 @@ export default function ArticleEditForm({ formData, setFormData }) {
         value={formData.type}
         onChange={(event) => handleChange("type", event.target.value)}
       />
-
       <Button type="submit" mt="md" className="w-full">
         Enregistrer
       </Button>
