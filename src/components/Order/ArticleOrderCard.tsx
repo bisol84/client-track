@@ -19,18 +19,8 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function ArticleOrderCard() {
   const [articleTotal, setArticleTotal] = useState(0);
-  const [articleId, setArticleId] = useState(null);
-  //Mettre toutes les valurs de l'article ici pour les passer plus bas
-  // Envoyer la fonction set à l'enfant qui doit écrire et l avaraible aux autres
-
-  const { data, error } = useSWR(
-    articleId ? `/api/article/${articleId}` : null,
-    fetcher,
-  );
-
-  function handleArticleChange(articleId) {
-    setArticleId(articleId);
-  }
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [selectedOption1, setSelectedOption1] = useState(null);
 
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -39,12 +29,15 @@ export default function ArticleOrderCard() {
           <ArticleSelector
             label="Article"
             w={200}
-            onChange={handleArticleChange}
+            onChange={setSelectedArticle}
           />
           <TextInput label="Nombre" description="" placeholder="" w={100} />
         </div>
         <div className="flex justify-between">
-          <OptionsSelector articleID={articleId} />
+          <OptionsSelector
+            onChange={setSelectedOption1}
+            selectedArticle={selectedArticle}
+          />
           <TextInput
             label="Nombre"
             description=""
@@ -71,7 +64,7 @@ export default function ArticleOrderCard() {
         </div>
       </div>
       <Divider my="md" />
-      <div>Total : {data ? data.price + articleTotal : articleTotal}</div>
+      {/* <div>Total : {data ? data.price + articleTotal : articleTotal}</div> */}
     </Card>
   );
 }

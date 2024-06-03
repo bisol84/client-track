@@ -4,23 +4,23 @@ import useSWR from "swr";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function ArticleSelector({ onChange, label, w }) {
-  const { data, error } = useSWR("/api/articles", fetcher);
-  if (!data) return <div>Chargement...</div>;
-  if (error) return <div>Erreur</div>;
+  const { data: dataArticle, error: errorArticle } = useSWR(
+    `/api/articles/`,
+    fetcher,
+  );
 
-  const formattedData = data.map((article) => ({
+  if (errorArticle) return <div>Erreur</div>;
+  if (!dataArticle) return <div>Chargement...</div>;
+
+  const formattedData = dataArticle.map((article) => ({
     value: article.id,
-    label: article.type + " " + article.name,
+    label: article.name,
   }));
-  const dataWithEmptyOption = [
-    { value: "", label: "Sélectionnez un article" },
-    ...formattedData,
-  ];
 
   return (
     <NativeSelect
       label={label}
-      data={dataWithEmptyOption}
+      data={formattedData}
       className={`w-[${w}]`}
       onChange={(e) => onChange(e.target.value)}
     />
