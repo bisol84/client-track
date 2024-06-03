@@ -35,32 +35,15 @@ export default function ArticleOrderCard() {
         </div>
         <div className="flex justify-between">
           <OptionsSelector
+            w={200}
             onChange={setSelectedOption1}
             selectedArticle={selectedArticle}
           />
-          <TextInput
-            label="Nombre"
-            description=""
-            placeholder=""
-            mt="md"
-            w={100}
-          />
+          <TextInput label="Nombre" description="" placeholder="" w={100} />
         </div>
         <div className="flex justify-between">
-          <TextInput
-            label="Option 2"
-            description=""
-            placeholder=""
-            mt="md"
-            w={200}
-          />
-          <TextInput
-            label="Nombre"
-            description=""
-            placeholder=""
-            mt="md"
-            w={100}
-          />
+          <TextInput label="Option 2" description="" placeholder="" w={200} />
+          <TextInput label="Nombre" description="" placeholder="" w={100} />
         </div>
       </div>
       <Divider my="md" />

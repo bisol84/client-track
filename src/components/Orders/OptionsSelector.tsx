@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function OptionsSelector({ onChange, selectedArticle }) {
+export default function OptionsSelector({ onChange, selectedArticle, w }) {
   const { data: dataOptions, error: errorOptions } = useSWR(
     selectedArticle ? `/api/options/${selectedArticle}` : null,
     fetcher,
@@ -20,9 +20,9 @@ export default function OptionsSelector({ onChange, selectedArticle }) {
 
   return (
     <NativeSelect
-      label=""
+      label="Option"
       data={formattedData}
-      className="w-full"
+      className={`w-[${w}]`}
       onChange={(e) => onChange(e.target.value)}
     />
   );
