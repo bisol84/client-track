@@ -1,6 +1,8 @@
 import prisma from "@/lib/db";
 import { parse } from "path";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: Request, { params }) {
   const articleId = parseInt(params.id);
   try {

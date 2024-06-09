@@ -9,9 +9,6 @@ export async function POST(req: Request, res: Response) {
       where: { id: parseInt(data.get("client-selector")) },
     });
 
-    console.log("Client trouvé :", client);
-    console.log("Données du formulaire :", data);
-
     const result = await prisma.Orders.create({
       data: {
         firstname: client.firstname,

@@ -3,7 +3,7 @@ import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function ArticleSelector({ onChange, label, w }) {
+export default function ArticleSelector({ onChange, index, label, w }) {
   const { data: dataArticle, error: errorArticle } = useSWR(
     `/api/articles/`,
     fetcher,
@@ -15,14 +15,24 @@ export default function ArticleSelector({ onChange, label, w }) {
   const formattedData = dataArticle.map((article) => ({
     value: article.id,
     label: article.name,
+    price: article.price,
   }));
+
+  const handleChange = (e) => {
+    const selectedArticle = dataArticle.find(
+      (article) => article.id.toString() === e.target.value,
+    );
+    if (selectedArticle) {
+      onChange(index, "article", selectedArticle);
+    }
+  };
 
   return (
     <NativeSelect
       label={label}
       data={formattedData}
       className={`w-[${w}]`}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={handleChange}
     />
   );
 }
