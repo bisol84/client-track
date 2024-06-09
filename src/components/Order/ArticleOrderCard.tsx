@@ -32,11 +32,13 @@ export default function ArticleOrderCard() {
         id: 0,
         name: "",
         price: 0,
+        quantity: 0,
       },
       option2: {
         id: 0,
         name: "",
         price: 0,
+        quantity: 0,
       },
     },
     {
@@ -47,10 +49,17 @@ export default function ArticleOrderCard() {
         price: 0,
         quantity: 0,
       },
-      options: {
+      option1: {
         id: 0,
         name: "",
         price: 0,
+        quantity: 0,
+      },
+      option2: {
+        id: 0,
+        name: "",
+        price: 0,
+        quantity: 0,
       },
     },
     {
@@ -61,10 +70,17 @@ export default function ArticleOrderCard() {
         price: 0,
         quantity: 0,
       },
-      options: {
+      option1: {
         id: 0,
         name: "",
         price: 0,
+        quantity: 0,
+      },
+      option2: {
+        id: 0,
+        name: "",
+        price: 0,
+        quantity: 0,
       },
     },
   ]);
