@@ -14,6 +14,7 @@ import ArticleSelector from "../Orders/ArticleSelector";
 import { useState } from "react";
 import useSWR from "swr";
 import OptionsSelector from "../Orders/OptionsSelector";
+import QuantitySelector from "../Orders/QuantitySelector";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -105,24 +106,24 @@ export default function ArticleOrderCard() {
       {articles.map((article, index) => (
         <div key={index}>
           <Card shadow="sm" padding="lg" radius="md" withBorder key={index}>
-            <div className="flex justify-between">
+            <div className="flex justify-between gap-5">
               <ArticleSelector
                 label="Article"
                 index={index}
                 w={200}
                 onChange={handleArticleSelection}
               />
-              <TextInput label="Nombre" description="" placeholder="" w={100} />
+              <QuantitySelector />
             </div>
             <div className="flex justify-between">
               <OptionsSelector
-                w={200}
+                // w={200}
                 onChange={handleArticleSelection}
                 index={index}
                 selectedArticle={article}
                 name="option1"
               />
-              <TextInput label="Nombre" description="" placeholder="" w={100} />
+              <QuantitySelector />
             </div>
             <div className="flex justify-between">
               <OptionsSelector
@@ -132,7 +133,7 @@ export default function ArticleOrderCard() {
                 selectedArticle={article}
                 name="option2"
               />
-              <TextInput label="Nombre" description="" placeholder="" w={100} />
+              <QuantitySelector />
             </div>
             <Divider my="md" />
             <div>Total : {orderTotalPrice}</div>

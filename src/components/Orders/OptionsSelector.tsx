@@ -21,13 +21,7 @@ export default function OptionsSelector({
   if (!dataOptions)
     return (
       <div>
-        <NativeSelect
-          label="Option"
-          data=""
-          className={`w-[${w}]`}
-          name={name}
-          disabled
-        />
+        <NativeSelect label="Option" name={name} className="w-full" disabled />
       </div>
     );
 
