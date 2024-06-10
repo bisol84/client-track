@@ -12,11 +12,14 @@ export default function ArticleSelector({ onChange, index, label, w }) {
   if (errorArticle) return <div>Erreur</div>;
   if (!dataArticle) return <div>Chargement...</div>;
 
-  const formattedData = dataArticle.map((article) => ({
-    value: article.id,
-    label: article.name,
-    price: article.price,
-  }));
+  const formattedData = [
+    { value: "", label: "Sélectionner un article", price: "" },
+    ...dataArticle.map((article) => ({
+      value: article.id,
+      label: article.name,
+      price: article.price,
+    })),
+  ];
 
   const handleChange = (e) => {
     const selectedArticle = dataArticle.find(

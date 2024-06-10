@@ -10,7 +10,6 @@ export async function GET(req: Request, { params }) {
         article_id: articleId,
       },
     });
-    console.log("Résultat de la sélection :", result);
     return Response.json(result);
   } catch (error) {
     console.error("Erreur lors de la sélection :", error);

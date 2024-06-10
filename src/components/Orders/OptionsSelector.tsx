@@ -16,16 +16,29 @@ export default function OptionsSelector({
       : null,
     fetcher,
   );
-  console.log("selectedArticle", selectedArticle);
 
   if (errorOptions) return <div>Erreur</div>;
-  if (!dataOptions) return <div>Chargement...</div>;
+  if (!dataOptions)
+    return (
+      <div>
+        <NativeSelect
+          label="Option"
+          data=""
+          className={`w-[${w}]`}
+          name={name}
+          disabled
+        />
+      </div>
+    );
 
-  const formattedData = dataOptions.map((option) => ({
-    value: option.id,
-    label: option.name,
-    price: option.price,
-  }));
+  const formattedData = [
+    { value: "", label: "Sélectionner une option", "data-price": "" },
+    ...dataOptions.map((option) => ({
+      value: option.id,
+      label: option.name,
+      "data-price": option.price,
+    })),
+  ];
 
   const handleChange = (e) => {
     const selectedOption = dataOptions.find(
@@ -39,11 +52,7 @@ export default function OptionsSelector({
   return (
     <NativeSelect
       label="Option"
-      data={dataOptions.map((option) => ({
-        value: option.id,
-        label: option.name,
-        "data-price": option.price,
-      }))}
+      data={formattedData}
       className={`w-[${w}]`}
       name={name}
       onChange={handleChange}
