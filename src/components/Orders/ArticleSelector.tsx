@@ -25,6 +25,7 @@ export default function ArticleSelector({ onChange, index, label, w }) {
     const selectedArticle = dataArticle.find(
       (article) => article.id.toString() === e.target.value,
     );
+    console.log("selectedArticle", selectedArticle);
     if (selectedArticle) {
       onChange(index, "article", selectedArticle);
     }
