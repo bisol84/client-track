@@ -96,9 +96,11 @@ export default function ArticleOrderCard() {
     }
     setArticles(newArticles);
 
-    // Recalculate the total order price
-    // const total = newArticles.reduce((sum, article) => sum + article.price * article.quantity, 0);
-    // setOrderTotalPrice(total);
+    const price =
+      articles[index].article.price * articles[index].article.quantity +
+      articles[index].option1.price * articles[index].option1.quantity +
+      articles[index].option2.price * articles[index].option2.quantity;
+    setOrderTotalPrice(price);
   };
 
   return (

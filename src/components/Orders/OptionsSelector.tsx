@@ -45,7 +45,7 @@ export default function OptionsSelector({
 
   return (
     <NativeSelect
-      label="Option"
+      label={"Option"}
       data={formattedData}
       className={`w-[${w}]`}
       name={name}
