@@ -1,9 +1,9 @@
 "use client";
 
 import { Card, Divider } from "@mantine/core";
-import ArticleSelector from "../Orders/ArticleSelector";
 import { useState } from "react";
 import OptionsSelector from "../Orders/OptionsSelector";
+import ArticleSelector from "../Orders/ArticleSelector";
 import QuantitySelector from "../Orders/QuantitySelector";
 
 export default function ArticleOrderCard() {
